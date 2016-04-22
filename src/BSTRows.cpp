@@ -22,16 +22,51 @@ Note : Return -1 for Invalid Cases .
 
 #include <stdlib.h>
 #include <stdio.h>
+int *q1,t=0;
 
 struct node{
 	struct node * left;
 	int data;
 	struct node *right;
 };
+void printGivenLevel(struct node* root, int level)
+{
+	if (root == NULL)
+		return;
+	if (level == 1)
+	{
+		q1[t] = root->data;
+		t++;
+	}
+	else if (level > 1)
+	{
+		printGivenLevel(root->right, level - 1);
+		printGivenLevel(root->left, level - 1);
+	}
+}
+
+int get_height1(struct node *root){
+	if (root == NULL)
+		return 0;
 
 
-
+	int heightLeft = get_height1(root->left);
+	int heightRight = get_height1(root->right);
+	if (heightLeft > heightRight)
+		return(heightLeft + 1);
+	else
+		return(heightRight + 1);
+}
 int* BSTRighttoLeftRows(struct node* root)
 {
-    return NULL;
+
+	q1 = (int *)malloc(20 * sizeof(int));
+	if (root == NULL)
+		return q1;
+	
+	int h = get_height1(root);
+	int i;
+	for (i = 1; i <= h; i++)
+		printGivenLevel(root, i);
+	return q1;
 }

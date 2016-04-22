@@ -115,7 +115,7 @@ namespace spec
 		[TestMethod, Timeout(2000)]
 		void Transversals_FiveNums()
 		{
-			struct node *root = NULL;
+				struct node *root = NULL;
 			int nums[10] = {5,2,10,7,12 };
 			int elements = 5;
 			for (int i = 0; i < elements; i++){

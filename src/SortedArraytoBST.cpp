@@ -31,11 +31,40 @@ struct node{
 	struct node * left;
 	int data;
 	struct node *right;
-};
-
-
+}*root1;
+int flag = 0;
+struct node *create1(int val)
+{
+	struct node *tmp;
+	tmp = (struct node *)malloc(sizeof(struct node));
+	tmp->data = val;
+	tmp->left = NULL;
+	tmp->right = NULL;
+	return tmp;
+}
+struct node *create_bst(int *a, int start, int end)
+{
+	int mid;
+	if (start > end)
+		return NULL;
+	mid = (start + end) / 2;
+	struct node *head= create1(a[mid]);
+	head->left = create_bst(a, start, mid - 1);
+	head->right = create_bst(a, mid + 1, end);
+	return head;
+}
 struct node * convert_array_to_bst(int *arr, int len){
-	
+	int start = 0, end = len;
+	int lheight, rheight;
+if (arr==NULL || len==0 || len<0)
 	return NULL;
+	root1=create_bst(arr,start,end-1);
+	
+	 
+return root1;
+	
+
+	
+
 }
 

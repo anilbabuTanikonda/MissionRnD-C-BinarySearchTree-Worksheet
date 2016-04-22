@@ -15,7 +15,8 @@ it and understand how testing works .
 */
 
 #include <stdio.h>
-
+#include<stdlib.h>
+int i = 0, j = 0, k = 0;
 struct node{
 	struct node * left;
 	int data;
@@ -24,12 +25,49 @@ struct node{
 
 
 void inorder(struct node *root, int *arr){
+	if (root == NULL)
+	{
+
+	}
+	else{
+		inorder(root->left, arr);
+		arr[i] = root->data;
+		i++;
+		inorder(root->right, arr);
+	}
+	
+		
+
 	
 }
 void preorder(struct node *root, int *arr){
+	if (root == NULL)
+	{
+
+	}
+	else
+	{
+		arr[j] = root->data;
+		j++;
+		preorder(root->left, arr);
+		preorder(root->right, arr);
+	}
+
 	
 }
 void postorder(struct node *root, int *arr){
 	
+	if (root == NULL)
+	{
+
+	}
+	else
+	{
+		postorder(root->left, arr);
+		postorder(root->right, arr);
+		arr[k] = root->data;
+		k++;
+		
+	}
 }
 
